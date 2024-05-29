@@ -2,12 +2,11 @@ package request;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.Test;
 import payload.Booking;
-import payload.BookingDates;
+import payload.BookingDate;
 
 import java.io.File;
 import java.util.HashMap;
@@ -43,7 +42,7 @@ public class PostRequestTest {
     public void postRequestUsingFilePayloadTest(){
         RequestSpecification specification= RestAssured.given();
         specification.contentType(ContentType.JSON);
-        specification.body(new File("./booking.json"));
+        specification.body(new File("./src/main/resources/Payload.json"));
         Response response = specification.post("https://restful-booker.herokuapp.com/booking");
         response.prettyPrint();
         System.out.println("Content-type: "+ response.contentType());
@@ -79,17 +78,17 @@ public class PostRequestTest {
     @Test
     public void postRequestUsingPojoTest(){
 
-        BookingDates bookingDates=new BookingDates();
-        bookingDates.setCheckin("2018-01-01");
-        bookingDates.setCheckout("2019-01-01");
+        BookingDate bookingDate=new BookingDate();
+        bookingDate.setCheckin("2018-01-01");
+        bookingDate.setCheckout("2019-01-01");
 
         Booking booking=new Booking();
-        booking.setFirstname("Kusuma");
-        booking.setLastname("P");
-        booking.setTotalprice(1500.1);
+        booking.setFirstname("kusu");
+        booking.setLastname("chinnu");
+        booking.setTotalprice(10000.0);
         booking.setDepositpaid(true);
-        booking.setBookingdates(bookingDates);
-        booking.setAdditionalneeds("Mushroom Biriyani");
+        booking.setBookingdates(bookingDate);
+        booking.setAdditionalneeds("Desserts");
 
         RequestSpecification request=RestAssured.given();
         request.contentType(ContentType.JSON);
