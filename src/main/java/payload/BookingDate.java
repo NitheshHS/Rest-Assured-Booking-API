@@ -1,14 +1,12 @@
 package payload;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class BookingDate {
     //1. private variables
     private String checkin;
