@@ -8,21 +8,50 @@ import io.restassured.http.Cookies;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
+import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class GetRequestTest {
     @Test
     public void getTest(){
         //Request
-        RequestSpecification requestSpecification = RestAssured.given();
+       /* RequestSpecification requestSpecification = RestAssured.given();
         requestSpecification.contentType(ContentType.JSON);
         //Response
         Response response = requestSpecification.get("https://petstore.swagger.io/v2/pet/12");
         //validation
-        response.prettyPrint();
+        response.prettyPrint();*/ //response body
+
+        RestAssured.given()
+                .contentType(ContentType.JSON)
+                .when()
+                .get("https://petstore.swagger.io/v2/pet/15757")
+                .then()
+                .log().all();//headers + response body
+
+    }
+
+    @Test
+    public void getBookingIdList(){
+        RestAssured.given()//headers+req body+auth+path param + query param + cookie
+                .contentType(ContentType.JSON)
+                .when()// get, post, put, delete, patch
+                .get("https://restful-booker.herokuapp.com/booking")
+                .then()// assertion, statuscode, logs, status, response time
+                .assertThat().time(Matchers.lessThan(2500L), TimeUnit.MILLISECONDS)
+                .assertThat().contentType(ContentType.JSON)
+                //.assertThat().body("[1].bookingid", Matchers.equalTo(1052))//syntax -> .body("jsonpath", Matchers condition)
+                .assertThat().header("X-Powered-By", Matchers.equalTo("Express"))//syntax -> .header("header key", Matchers conditions)
+                .log().all();
+        /*
+        1. Given - request setup
+        2. when -  crud operations
+        3. then - response validation
+         */
     }
 
     @Test
