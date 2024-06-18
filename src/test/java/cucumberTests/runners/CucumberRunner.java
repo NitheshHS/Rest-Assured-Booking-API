@@ -5,9 +5,12 @@ import io.cucumber.testng.CucumberOptions;
 
 //Runner class used to map feature file and step definitions and also used to generate reports
 @CucumberOptions(
-        features = {"src/test/java/cucumberTests/features"},//feature file path
+        features = {
+                //"src/test/java/cucumberTests/features"
+                "src/test/java/cucumberTests/features/PracticeForm.feature"
+        },//feature file path
         glue = {"cucumberTests.stepDefinition"},//package name
-        dryRun = true,
+        dryRun = false,
         monochrome = true,
         plugin = {"pretty"}
 )

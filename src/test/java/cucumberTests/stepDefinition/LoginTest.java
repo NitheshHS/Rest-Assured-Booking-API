@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -65,5 +66,13 @@ public class LoginTest {
     @Then("send number {int}")
     public void send_number(Integer number) {
         System.out.println("the number in step is "+number);
+    }
+
+    @Then("verify error message is displayed")
+    public void verify_error_message_is_displayed() {
+        String messageInUI = driver.findElement(By.xpath("//div[@class='orangehrm-login-error']/descendant::p[contains(@class, 'alert')]")).getText();
+        String expectedMessage = "Invalid credentials";
+        Assert.assertEquals(expectedMessage, messageInUI);
+        driver.close();
     }
 }
