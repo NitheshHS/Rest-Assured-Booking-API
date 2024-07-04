@@ -7,12 +7,13 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = {
                 //"src/test/java/cucumberTests/features"
-                "src/test/java/cucumberTests/features/PracticeForm.feature"
+                "src/test/java/cucumberTests/features/SwagLabLogin.feature"
         },//feature file path
         glue = {"cucumberTests.stepDefinition"},//package name
         dryRun = false,
         monochrome = true,
-        plugin = {"pretty"}
+        plugin = {"pretty",
+        "html:Report.html"}
 )
 public class CucumberRunner extends AbstractTestNGCucumberTests {
 }

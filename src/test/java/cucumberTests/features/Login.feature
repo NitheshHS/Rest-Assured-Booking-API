@@ -5,6 +5,7 @@ Feature: Login page test
     Given Enter the url "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
 
   #hardcoded values in step definitions
+  #scenario will exceute only once
   Scenario: As a user I want to login to application
     When login page is displayed enter username and password
     When click on login button

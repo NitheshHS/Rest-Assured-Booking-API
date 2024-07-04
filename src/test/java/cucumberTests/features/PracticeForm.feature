@@ -1,5 +1,5 @@
 Feature: As user I want to fill practice form for multiple users
-
+# same scenrio will execute multiple times with different set of data
   Scenario Outline: As a user I want to fill multiple user data
     Given I want to launch "chrome" browser
     And enter the url "https://demoqa.com/automation-practice-form"
@@ -11,3 +11,5 @@ Feature: As user I want to fill practice form for multiple users
       | Nithesh    | Gowda     | nithesh@gmail.com |
       | Kusu       | Gowda     | kusu@gmail.com    |
 
+    #Table Header
+    #Test data
