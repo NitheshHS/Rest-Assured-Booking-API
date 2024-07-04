@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 
+import java.util.List;
+
 public class SwagLoginTest {
     WebDriver driver;
     @Given("launch browser")
@@ -30,5 +32,15 @@ public class SwagLoginTest {
         String actualHomePageUrl = driver.getCurrentUrl();
         Assert.assertEquals(actualHomePageUrl, expectedUrl, "Home page url doesn't match");
         driver.close();
+    }
+
+    @When("login page is displayed enter username and password and click on login")
+    public void login_page_is_displayed_enter_username_and_password_and_click_on_login(io.cucumber.datatable.DataTable dataTable) {
+        List<List<String>> userData = dataTable.asLists(String.class);
+        String username = userData.get(0).get(0);//(0,0)->standard_user
+        String password = userData.get(0).get(1);//(0,1)->secret_sauce
+        driver.findElement(By.id("user-name")).sendKeys(username);
+        driver.findElement(By.id("password")).sendKeys(password);
+        driver.findElement(By.id("login-button")).click();
     }
 }
