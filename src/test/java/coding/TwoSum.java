@@ -1,0 +1,24 @@
+package coding;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+public class TwoSum {
+    public static void main(String[] args) {
+        int[] arr={1,2,3,4,11,12};//15
+        System.out.println(Arrays.toString(twoSum(arr, 15)));
+    }
+
+    public static int[] twoSum(int[] arr, int sum){
+        Map<Integer, Integer> map=new HashMap<>();
+        for(int i=0;i<arr.length;i++){
+            int diff = Math.subtractExact(sum, arr[i]);//7-9=2
+            if(map.containsKey(diff)){
+               return new int[]{i,map.get(diff)};
+            }
+            map.put(arr[i], i);
+        }
+        return new int[]{-1,-1};
+    }
+}
