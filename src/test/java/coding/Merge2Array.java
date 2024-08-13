@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class Merge2Array {
     public static void main(String[] args) {
-        int[] input1={10,20,30,40};
-        int[] input2={1,2,3,4};
+        int[] input1={10,12,14,16};
+        int[] input2={11,13,15,17};
         //[10,1,20,2,30,3]
         System.out.println(Arrays.toString(mergeArray(input1, input2)));
 
