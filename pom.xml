@@ -72,6 +72,13 @@
             <artifactId>jsoup</artifactId>
             <version>1.17.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
+        <!-- io.cucumber.java.InvalidMethodException: You're not allowed to extend classes that define Step Definitions or hooks.-->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>7.18.0</version>
+        </dependency>
 
 
     </dependencies>

@@ -9,11 +9,12 @@ import io.cucumber.testng.CucumberOptions;
                 //"src/test/java/cucumberTests/features"
                 "src/test/java/cucumberTests/features/SwagLabLogin.feature"
         },//feature file path
-        glue = {"cucumberTests.stepDefinition"},//package name
+        glue = {"cucumberTests.stepDefinition","cucumberTests.stepDefinition.HookClass"},//package name
         dryRun = false,
         monochrome = true,
         plugin = {"pretty",
-        "html:Report.html"}
+        "html:Report.html"},
+        tags = "@SmokeTest or @Regression"
 )
 public class CucumberRunner extends AbstractTestNGCucumberTests {
 }
